@@ -1,0 +1,57 @@
+@mixin transition-all()
+{
+    -webkit-transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    transition: all 0.35s;
+}
+
+@mixin background-cover()
+{
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+@mixin button-variant($color, $background, $border)
+{
+	color: white;
+	background-color: $green-dark;
+	@include transition-all;
+	border-color: transparent;
+	font-size: $button-font-size;
+	font-family: $link-font-base;
+
+	&:hover,
+	&:focus,
+	&.focus,
+	&:active,
+	&.active,
+	.open > .dropdown-toggle & {
+		color: white;
+		background-color: darken($green-dark, 5%);
+	}
+	&:active,
+	&.active,
+	.open > .dropdown-toggle & {
+		background-image: none;
+	}
+	&.disabled,
+	&[disabled],
+	fieldset[disabled] & {
+		&,
+		&:hover,
+		&:focus,
+		&.focus,
+		&:active,
+		&.active {
+			background-color: $background;
+			border-color: $border;
+		}
+	}
+
+	.badge {
+		color: $background;
+		background-color: $color;
+	}
+}

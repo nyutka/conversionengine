@@ -1,0 +1,20 @@
+a {
+    font-family: $link-font-base;
+    font-size: $link-size;
+    @include transition-all;
+    color: $text-color;
+    &:hover,
+    &:focus {
+        color: $green-dark;
+    }
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: $link-font-base;
+}
+
+p {
+    font-size: $font-size-base;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
