@@ -42,6 +42,7 @@ aside {
         }
     }
     .navbar-brand  {
+        padding: 15px 0;
         img {
             @include transition-all;
             height: 60px;
