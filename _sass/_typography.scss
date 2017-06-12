@@ -12,7 +12,31 @@ a {
 h1,h2,h3,h4,h5,h6 {
     font-family: $link-font-base;
 }
+h2,h3,h4,h5,h6 { 
+    color: $heading-color;
+}
+h1 {
+    font-size: $font-size-h1;
+    @include media-down(sm) {
+        font-size: $font-size-h1-mobile;
+    }
+    @include media-down(xs) {
+        font-size: 1.7em;
+    }
 
+}
+
+h2 {
+    font-size: $font-size-h2;
+}
+h3 {
+    font-size: $font-size-h3;
+}
+p.subheading {
+    font-size: $font-size-subheading;
+    line-height: 1.3;
+    color: $text-color;
+}
 p {
     font-size: $font-size-base;
     line-height: 1.5;

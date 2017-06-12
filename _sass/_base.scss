@@ -3,29 +3,14 @@ body {
     height: 100%;
     width: 100%;
 }
-
+* {
+    font-size: $font-size-base;
+    @include media-down(sm) {
+        font-size: $font-size-base-mobile;
+    }
+}
 body {
     font-family: $font-family-base;
-}
-
-hr {
-    border-color: $theme-primary;
-    border-width: 3px;
-    max-width: 50px;
-}
-
-hr.light {
-    border-color: white;
-}
-
-
-.bg-primary {
-    background-color: $theme-primary;
-}
-
-.bg-dark {
-    background-color: $theme-dark;
-    color: white;
 }
 
 .text-faded {
@@ -46,41 +31,95 @@ aside {
 
 // Navigation
 .navbar {
-    min-height: $header-height;;
+    min-height: $header-height;
+    background-clip: $whitish-gray;
+    @include media-down(sm) {
+        min-height: $header-mobile-height;
+    }
+    .navbar-header {
+        @include media-down(sm) {
+            float: left;
+        }
+    }
     .navbar-brand  {
         img {
+            @include transition-all;
             height: 60px;
+            @include media-down(sm) {
+                height: 45px;
+            }
+            @include media-down(xs) {
+                height: 38px;
+            }
+        }
+        @include media-down(xs) {
+            padding: 15px 5px;
         }
     }
     .nav {
+        @include media-down(sm) {
+            float: right;
+        }      
         li {
             line-height: $header-height;
-            a {
-                display: inline-block;
-                padding-top: 0;
-                padding-bottom: 0;
+            @include media-down(sm) {
+                line-height: $header-mobile-height;
+            }
+            button {
+                font-size: 1.2em;
+               @include transition-all;
+                padding: 10px 30px;
+                @include media-down(sm) {
+                    padding: 5px 15px;
+                    margin-right: 15px;
+                }
+                @include media-down(xs) {
+                    padding: 8px 12px;
+                    font-size: $font-size-base-mobile;
+                    text-transform: capitalize;
+                }
             }
         }
     }
     &.navbar-fixed-top.affix {
         min-height: $header-small-height;
+        border-color: rgba(199, 195, 195, 0.5);
+        @include media-down(sm) {
+            min-height: $header-mobile-height;
+        }
         .nav li {
             line-height: $header-small-height;
+            @include media-down(sm) {
+                line-height: $header-mobile-height;
+            }
+            button {
+                padding: 8px 30px;
+                @include media-down(sm) {
+                    padding: 8px 15px;
+                }
+                @include media-down(xs) {
+                    padding: 8px 12px;
+                }
+
+            }   
         }
+        .navbar-brand  {
+            img {
+                height: 50px;
+                @include media-down(sm) {
+                    height: 45px;
+                }
+                @include media-down(xs) {
+                    height: 38px;
+                }
+            }
+        }
+
     }
 }
 .navbar-default {
-    background-color: white;
-    border-color: rgba($theme-dark, .5);
     @include transition-all;
     .navbar-header .navbar-brand {
-        color: $theme-primary;
-        font-weight: 700;
-        text-transform: uppercase;
-        &:hover,
-        &:focus {
-            color: darken($theme-primary, 10%);
-        }
     }
     .nav {
         > li {
@@ -96,9 +135,7 @@ aside {
             }
         }
     }
-    @media (min-width: 768px) {
-        background-color: transparent;
-        border-color: rgba(white, .3);
+    @include media-down(sm) {
         .navbar-header .navbar-brand {
             color: rgba(white, .7);
             &:hover,
@@ -140,18 +177,27 @@ aside {
 header {
     position: relative;
     width: 100%;
-    min-height: auto;
-    @include background-cover;
-    background-position: center;
-    background-image: url('../img/header.jpg');
+    min-height: 100vh;
+    background-color: $fuchsia;
     text-align: center;
     color: white;
     .header-content {
-        position: relative;
+        position: absolute;
+        top: 55%;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
         text-align: center;
-        padding: 100px 15px 100px;
         width: 100%;
         .header-content-inner {
+            display: inline-block;
+            width: 80%;
+            @include media-down(sm) {
+                width: 100%;
+                padding-right: 15px;
+                padding-left: 15px;
+            }
             h1 {
                 font-weight: 700;
                 text-transform: uppercase;
@@ -163,28 +209,21 @@ header {
             }
             p {
                 font-weight: 300;
-                color: rgba(white, .7);
-                font-size: 16px;
+                color: rgba(white, .9);
+                font-size: 24px;
                 margin-bottom: 50px;
             }
         }
     }
-    @media (min-width: 768px) {
+    @include media-down(sm) {
         min-height: 100%;
         .header-content {
-            position: absolute;
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
-            padding: 0 50px;
             .header-content-inner {
-                max-width: 1000px;
                 margin-left: auto;
                 margin-right: auto;
                 p {
                     font-size: 18px;
-                    max-width: 80%;
+                    max-width: 90%;
                     margin-left: auto;
                     margin-right: auto;
                 }
@@ -192,9 +231,7 @@ header {
         }
     }
 }
-
 // Sections
-
 .section-heading {
     margin-top: 0;
 }
@@ -207,6 +244,49 @@ header {
     }
     p {
         margin-bottom: 0;
+    }
+}
+
+.advanteges {
+    background-color: $background-gray-color;
+    padding: 80px 0 50px 0;
+    margin: 40px 0;
+    .advanteges-box {
+        border: 6px solid $light-gray-color;
+        cursor: pointer;
+        -webkit-transition : border-color 500ms ease-out;
+        -moz-transition : border-color 500ms ease-out;
+        -o-transition : border-color 500ms ease-out;
+        transition : border-color 500ms ease-out;
+        min-height: 370px;
+        padding: 20px;
+        &:hover {
+            border-color: $green-dark;
+        }
+        @include media-down(md) {
+            min-height: 400px;
+        }
+        @include media-down(sm) {
+            min-height: 315px;
+            margin-top: 70px;
+        }
+        i {
+            margin-top: -75px;
+            font-size: 5em;
+            color: $fuchsia;
+            background-color: $background-gray-color;
+            width: 150px;
+        }
+        h3 {
+            margin: 40px 0 20px 0;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        p {
+            margin-bottom: 20px;
+            font-weight: 300;
+            font-size: 1.2em;
+        }
     }
 }
 
@@ -224,6 +304,23 @@ header {
 .no-gutter > [class*='col-'] {
     padding-right:0;
     padding-left:0;
+}
+
+// Line styles 
+hr.header-line {
+    display: inline-block;
+    border-top: 5px solid;
+    width: 100px;
+    text-align: center;
+    border-color: $green-dark;
+}
+hr.subheader-line {
+    display: inline-block;
+    border-top: 3px solid;
+    width: 60px;
+    text-align: center;
+    margin: 30px 0;
+    border-color: $green-dark;
 }
 
 // Button Styles
