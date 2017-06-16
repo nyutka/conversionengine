@@ -28,6 +28,9 @@ h1 {
 
 h2 {
     font-size: $font-size-h2;
+    @include media-down(sm) {
+        font-size: $font-size-h2-mobile;
+    }
 }
 h3 {
     font-size: $font-size-h3;

@@ -1,21 +1,19 @@
 // Our variables
-@font-face {
-  font-family: 'Ailerons-Regular';
-  src: url('../fonts/Ailerons-Regular.eot');
-}
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600|Varela');
 
-$font-family-base: 'Ailerons-Regular', sans-serif;
-$link-font-base: 'Lato', sans-serif;
+$font-family-base:  'Montserrat', sans-serif;
+$button-family-base: 'Varela', sans-serif;
+$link-font-base: 'Montserrat', sans-serif;
 
 $font-size-base: 16px;
 $font-size-base-mobile: 14px;
 
-$font-size-h1: 4.5em;
+$font-size-h1: 4em;
 $font-size-h1-mobile: 2.5em;
 
 $font-size-h2: 2.5em;
-$font-size-subheading: 1.6em;
+$font-size-h2-mobile: 2.1em;
+$font-size-subheading: 1.5em;
 
 $font-size-h3: 1.6em;
 
