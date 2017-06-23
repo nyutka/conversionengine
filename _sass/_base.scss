@@ -272,6 +272,9 @@ header {
         transition : border-color 500ms ease-out;
         min-height: 370px;
         padding: 20px;
+        @include media-down(md) {
+            padding: 20px 5px;
+        }
         &:hover {
             border-color: $green-dark;
         }
@@ -293,6 +296,10 @@ header {
             margin: 40px 0 20px 0;
             text-transform: uppercase;
             font-weight: 700;
+            min-height: 56px;
+            @include media-down(sm) {
+                min-height: auto;
+            }
         }
         p {
             margin-bottom: 20px;
